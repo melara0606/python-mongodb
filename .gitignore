@@ -1,0 +1,5 @@
+lib/*.*
+include/*.*
+bin
+.vscode
+__pycache__
