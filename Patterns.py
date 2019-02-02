@@ -37,15 +37,22 @@ def main():
     #db.users.delete_many({  "username" : "foouser" })
     #db.users.delete_one({  "username" : "jonedoe" })
     #db.users.update_one({ "facebook.username" : "foofacebokk" }, { "$set" : { "facebook.username": "bar" }})
-    """ users = db.users.find()
-    for user in users:
-      print(user) """
+    # users = db.users.find()
+    # for user in users:
+    #   print(user)
     
     # Borramos de el paquete de correos aquel que tiene el correo 'foouser2@example.com"'
     #db.users.update_one({"username":"foouser"}, {"$pull":{"emails":{"email":"foouser2@example.com"}}})
     # db.users.update_one({"username":"foouser"}, {"$pull": { "emails": { "primary" : { "$ne" : True }}}})
-    # db.users.update_one({"username":"foouser"}, { "$push": { "emails": { "email": "foouser4@example.com", "primary": False }}})
+    # db.users.update_one({"username":"foouser"}, { "$push": { "emails": { "email": "foouser4@example.com", "primary": False }}})    
+
+    # db.users.update_one({'emails.email':'foouser2@example.com'}, {'$set':{'emails.$.primary':True}})
+    # db.users.update_one({'emails.email':'foouser1@example.com'}, {'$set':{'emails.$.primary':False}})
     
+    # db.users.delete_many({ 'username' : 'foouser' })
+
+    #Index
+    db.users.create_index('username')
     print(db.users.find_one({ "username" : "foouser" }))
   except ConnectionFailure as e:
     sys.stdout.write("%s" % e)
