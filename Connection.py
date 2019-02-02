@@ -21,7 +21,8 @@ def main():
     dbh.users.insert_one(user_doc)
     print("Successfully inserted document: %s" % user_doc)
   except ConnectionFailure as e:
-    sys.stderr.write("Could not connect to mongodb %s" % e)         
+    sys.stderr.write("Could not connect to mongodb %s" % e)
+    sys.exit(1) 
 
 if __name__ == "__main__":
   main()
